@@ -1,0 +1,10 @@
+*.iml
+*.xml
+target/*
+*.class
+*.rar
+src/*.rar
+.idea/
+!src/*.java
+*.puml
+src/main/java/TEMP/*
