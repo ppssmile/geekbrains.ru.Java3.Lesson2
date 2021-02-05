@@ -1,6 +1,6 @@
-package Lesson2.client;
+package Lesson3.client;
 
-import Lesson2.gui.ChatFrame;
+import Lesson3.gui.ChatFrame;
 
 import java.util.function.Consumer;
 
@@ -23,9 +23,7 @@ public class ClientChatAdapter {
         new Thread(() -> {
             try {
                 while (true) {
-                    chatFrame.append(
-                            client.receiveMessage()+"\n"
-                    );
+                    chatFrame.append(client.receiveMessage() + "\n");
                 }
             } catch (ClientConnectionException e) {
                 throw e;

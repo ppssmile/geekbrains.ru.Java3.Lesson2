@@ -1,4 +1,4 @@
-package Lesson2.gui;
+package Lesson3.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,8 +45,7 @@ public class ChatFrame extends JFrame {
     }
 
     public void append(String message) {
-        stringBuilder.append(textArea.getText())
-                .append(message);
+        stringBuilder.append(textArea.getText()).append(message);
         textArea.setText(stringBuilder.toString());
         stringBuilder.setLength(0);
     }

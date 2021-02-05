@@ -1,6 +1,6 @@
-package Lesson2.application;
+package Lesson3.application;
 
-import Lesson2.server.ServerChat;
+import Lesson3.server.ServerChat;
 
 public class ServerApp {
     public static void main(String[] args) {

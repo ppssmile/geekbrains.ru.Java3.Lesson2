@@ -1,4 +1,4 @@
-package Lesson2.client;
+package Lesson3.client;
 
 import java.io.Closeable;
 import java.io.DataInputStream;

@@ -1,4 +1,4 @@
-package Lesson2.server;
+package Lesson3.server;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -24,11 +24,6 @@ public class ServerChat implements Chat {
         try {
             serverSocket = new ServerSocket(8888);
             clients = new HashSet<>();
-
-            /**
-             * Here need to input into AuthenticationService() on connect from MydDB.db
-             */
-
             authenticationService = new AuthenticationService();
 
             while (true) {
@@ -52,7 +47,6 @@ public class ServerChat implements Chat {
 
     @Override
     public synchronized boolean isNicknameOccupied(String userName) {
-        //
         for (ClientHandler client : clients) {
             if (client.getName().equals(userName)) {
                 return true;

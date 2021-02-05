@@ -8,3 +8,5 @@ src/*.rar
 !src/*.java
 *.puml
 src/main/java/TEMP/*
+src/main/resources/*
+src/main/java/Test.java

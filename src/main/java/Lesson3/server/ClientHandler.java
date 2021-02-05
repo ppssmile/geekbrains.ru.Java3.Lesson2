@@ -1,6 +1,7 @@
-package Lesson2.server;
+package Lesson3.server;
 
-import Lesson2.DB.ConnectionService;
+import Lesson3.DB.ConnectionService;
+import Lesson3.client.LocalHistoryRecord;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -47,18 +48,11 @@ public class ClientHandler {
     private void doAuth() {
         sendMessage("Please enter credentials. Sample [-auth login password]");
         try {
-            /**
-             * -auth login password
-             * sample: -auth l1 p1
-             */
             while (true) {
                 String mayBeCredentials = in.readUTF();
                 if (mayBeCredentials.startsWith("-auth")) {
                     String[] credentials = mayBeCredentials.split("\\s");
-                    boolean mayBeNickname = chat.getAuthenticationService(
-                            credentials[1],
-                            credentials[2]
-                    );
+                    boolean mayBeNickname = chat.getAuthenticationService(credentials[1], credentials[2]);
                     if (mayBeNickname) {
                         if (!chat.isNicknameOccupied(credentials[1])) {
                             sendMessage("[INFO] Auth OK");
@@ -66,7 +60,8 @@ public class ClientHandler {
                             name = credentials[1];
                             chat.broadcastMessage(String.format("[%s] logged in", credentials[1]));
                             chat.subscribe(this);
-
+                            LocalHistoryRecord.isExistToFile(credentials[1]);
+                            sendMessage(LocalHistoryRecord.doLoadingHistory(credentials[1]));
                             return;
                         } else {
                             sendMessage("[INFO] Current user is already logged in.");
@@ -94,16 +89,23 @@ public class ClientHandler {
     }
 
     public void receiveMessage() {
+        System.out.println("enter to receiveMSG");
         while (true) {
             try {
                 String message = in.readUTF();
                 exitChat(message);
-                if(message.startsWith("-rename")) {
+                if (message.startsWith("-rename")) {
                     userRename(message);
                     continue;
                 }
+
+                /**
+                 *  reading file and loading to ClientChat
+                 */
+
+                LocalHistoryRecord.doWriteIntoFile(this.name, message);
                 chat.broadcastMessage(String.format("[%s]: %s", name, message));
-            } catch (ArrayIndexOutOfBoundsException a){
+            } catch (ArrayIndexOutOfBoundsException a) {
                 sendMessage("[INFO] Login cannot be empty!!!");
             } catch (IOException e) {
                 throw new RuntimeException("SWW", e);
@@ -111,7 +113,7 @@ public class ClientHandler {
         }
     }
 
-    private boolean userRename (String str) {
+    private boolean userRename(String str) {
         String newName = str.split(" ")[1];
         if (!chat.isNicknameOccupied(newName)) {
             if (ConnectionService.updateUsersName(this, name, newName)) {
@@ -124,7 +126,7 @@ public class ClientHandler {
         return false;
     }
 
-    private void exitChat(String str){
+    private void exitChat(String str) {
         if (str.startsWith("-exit")) {
             chat.unsubscribe(this);
             chat.broadcastMessage(String.format("[%s] logged out", name));

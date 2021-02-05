@@ -1,6 +1,6 @@
-package Lesson2.DB;
+package Lesson3.DB;
 
-import Lesson2.server.ClientHandler;
+import Lesson3.server.ClientHandler;
 
 import java.sql.*;
 
@@ -40,18 +40,18 @@ public final class ConnectionService {
             statement.setString(1, login);
             statement.setString(2, password);
             ResultSet rs = statement.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 return true;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
+        } finally {
             ConnectionService.close(connection);
         }
         return false;
     }
 
-    public static boolean updateUsersName(ClientHandler clientHandler, String oldName, String newName){
+    public static synchronized boolean updateUsersName(ClientHandler clientHandler, String oldName, String newName) {
         Connection connection = connect();
         try {
             connection.setAutoCommit(false);
@@ -60,13 +60,13 @@ public final class ConnectionService {
             statement.setString(2, oldName);
             int rs = statement.executeUpdate();
             connection.commit();
-            if (rs==1){
+            if (rs == 1) {
                 return true;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             clientHandler.sendMessage(throwables.getMessage());
-        }finally {
+        } finally {
             ConnectionService.close(connection);
         }
         return false;

@@ -1,6 +1,6 @@
-package Lesson2.server;
+package Lesson3.server;
 
-import Lesson2.DB.ConnectionService;
+import Lesson3.DB.ConnectionService;
 
 public final class AuthenticationService {
 

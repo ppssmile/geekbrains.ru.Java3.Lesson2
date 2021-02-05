@@ -1,4 +1,4 @@
-package Lesson2.gui;
+package Lesson3.gui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
