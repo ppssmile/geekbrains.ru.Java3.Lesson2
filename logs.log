@@ -1,0 +1,21 @@
+2021-02-10 19:26:42 DEBUG ServerChat:28 - Server open
+2021-02-10 19:27:10 DEBUG ServerChat:37 - Client connect into server null
+2021-02-10 19:27:24 DEBUG ServerChat:48 - Send message: [l3] logged in
+2021-02-10 19:27:24 DEBUG ServerChat:68 - Client authentication into server: ClientHandler@238445a7
+2021-02-10 19:27:30 DEBUG ServerChat:48 - Send message: [l3]: +asdf
+2021-02-10 19:27:31 DEBUG ServerChat:48 - Send message: [l3]:  kd
+2021-02-10 19:27:32 DEBUG ServerChat:48 - Send message: [l3]:  ddkkd\
+2021-02-10 19:27:33 DEBUG ServerChat:48 - Send message: [l3]: \d
+2021-02-10 19:27:34 DEBUG ServerChat:48 - Send message: [l3]: 
+2021-02-10 19:27:34 DEBUG ServerChat:48 - Send message: [l3]: d
+2021-02-10 19:27:35 DEBUG ServerChat:48 - Send message: [l3]: ddd
+2021-02-10 19:27:39 DEBUG ServerChat:75 - Client remove from server: ClientHandler@238445a7
+2021-02-10 19:27:39 DEBUG ServerChat:48 - Send message: [l3] logged out
+2021-02-10 19:27:39 DEBUG ServerChat:48 - Send message: [l3]: -exit
+2021-02-10 19:28:55 DEBUG ServerChat:28 - Server open
+2021-02-10 19:29:18 DEBUG ServerChat:37 - Client connect into server null
+2021-02-10 19:30:05 DEBUG ServerChat:48 - Send message: [l3] logged in
+2021-02-10 19:30:05 DEBUG ServerChat:68 - Client authentication into server: ClientHandler@5a6fde1a
+2021-02-10 19:30:18 DEBUG ServerChat:75 - Client remove from server: ClientHandler@5a6fde1a
+2021-02-10 19:30:18 DEBUG ServerChat:48 - Send message: [l3] logged out
+2021-02-10 19:30:18 DEBUG ServerChat:48 - Send message: [l3]: -exit

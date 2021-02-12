@@ -14,9 +14,10 @@ public class ClientHandler {
     private DataInputStream in;
     private DataOutputStream out;
     private Socket socket;
-    private Chat chat;
+    private Lesson3.server.Chat chat;
 
-    public ClientHandler(Socket socket, Chat chat) {
+
+    public ClientHandler(Socket socket, Lesson3.server.Chat chat) {
         this.socket = socket;
         try {
             socket.setSoTimeout(120000);

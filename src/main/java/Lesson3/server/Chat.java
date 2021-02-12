@@ -1,4 +1,4 @@
-package Lesson3.server;
+package Lesson3.server.1.server;
 
 public interface Chat {
     void broadcastMessage(String message);
